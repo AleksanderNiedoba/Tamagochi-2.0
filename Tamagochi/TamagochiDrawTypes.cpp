@@ -3,13 +3,13 @@
 
 TamagochiDrawTypes::TamagochiDrawTypes()
 {
-	moodToFileName["Wonderful"] = "good.txt";
-	moodToFileName["life is beautiful"] = "good.txt";
-	moodToFileName["I'm happy"] = "normal.txt";
-	moodToFileName["life sucks"] = "normal.txt";
-	moodToFileName["Don't forget about me"] = "sad.txt";
-	moodToFileName["I'm dying"] = "sad.txt";
-	moodToFileName["dead"] = "gameOver.txt";
+	moodToAsciiArtNr["Wonderful"] = 3;
+	moodToAsciiArtNr["life is beautiful"] = 3;
+	moodToAsciiArtNr["I'm happy"] = 2;
+	moodToAsciiArtNr["life sucks"] = 2;
+	moodToAsciiArtNr["Don't forget about me"] = 1;
+	moodToAsciiArtNr["I'm dying"] = 1;
+	moodToAsciiArtNr["dead"] = 0;
 }
 
 TamagochiDrawTypes::~TamagochiDrawTypes()
@@ -17,8 +17,9 @@ TamagochiDrawTypes::~TamagochiDrawTypes()
 	//dtor
 }
 
-std::string TamagochiDrawTypes::getFileName(Tamagochi &tamagochi)
+int TamagochiDrawTypes::getArtNumber(std::string mood)
 {
-	const std::string mood = tamagochi.get_mood();
-	return moodToFileName[mood];
+
+	return moodToAsciiArtNr[mood];
 }
+

@@ -1,12 +1,15 @@
 #include "Draw.h"
-#include <windows.h>
-#include <string>
-#include <iostream>
-#include <assert.h>
+
 
 
 Draw::Draw()
 {
+	std::vector <std::string> fileNames = {"gameOver.txt","sad.txt" ,"normal.txt" ,"good.txt" };
+	for (int i=0; i < fileNames.size(); i++)
+	{
+		std::string art = getAscii(fileNames[i]);
+		asciiArts.push_back(art);
+	}
 	//ctor
 }
 
@@ -15,20 +18,24 @@ Draw::~Draw()
 	//dtor
 }
 
-
-void Draw::drawTamagochi(std::string fileName)
+std::string Draw::getAscii(std::string fileName)
 {
-
 	const std::string filePath = basePath + fileName;
 
 	std::ifstream Reader(filePath);             //Open file
-	assert(Reader.good());
+	
 
-	std::string Art = getFileContents(Reader);       //Get file
+	std::string art = getFileContents(Reader);       //Get file
+	Reader.close();
+	return art;
+}
 
-	std::cout << Art << std::endl;               //Print it to the screen
-
-	Reader.close();                           //Close file
+void Draw::drawTamagochi(Tamagochi& tamagochi)
+{
+	const std::string mood = tamagochi.get_mood();
+	TamagochiDrawTypes tdt;
+	int asciiNr = tdt.getArtNumber(mood);
+	cout << asciiArts[asciiNr];
 }
 
 std::string Draw::getFileContents(std::ifstream& File)

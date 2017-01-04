@@ -10,10 +10,11 @@ class TamagochiDrawTypes
 public:
 	TamagochiDrawTypes();
 	virtual ~TamagochiDrawTypes();
-	std::string getFileName(Tamagochi &tamagochi);
+	int getArtNumber(std::string);
+
 
 protected:
 
 private:
-	std::map<std::string, std::string> moodToFileName;
+	std::map<std::string, int> moodToAsciiArtNr;
 };
