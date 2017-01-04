@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Needs">
+      <UniqueIdentifier>{6b0782a8-747f-4388-bfce-12418b81c832}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Items">
+      <UniqueIdentifier>{cdd2c9a3-9ee0-4be2-b7ad-9f397beda801}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Needs">
+      <UniqueIdentifier>{689e6136-02a3-49f9-addf-ee02b2c8c8e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Items">
+      <UniqueIdentifier>{3f0e83c0-5f30-4cdb-8587-caef772c6408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Drawing">
+      <UniqueIdentifier>{a78915f9-d482-484a-aa08-70bc766ecb9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Drawing">
+      <UniqueIdentifier>{d61ab73b-cdd7-43f7-b713-516ff29b1baa}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tamagochi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entertainment_need.cpp">
+      <Filter>Source Files\Needs</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Food_need.cpp">
+      <Filter>Source Files\Needs</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemConteiner.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Need.cpp">
+      <Filter>Source Files\Needs</Filter>
+    </ClCompile>
+    <ClCompile Include="Needs_container.cpp">
+      <Filter>Source Files\Needs</Filter>
+    </ClCompile>
+    <ClCompile Include="Toys.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderBars.cpp">
+      <Filter>Source Files\Drawing</Filter>
+    </ClCompile>
+    <ClCompile Include="TamagochiDrawTypes.cpp">
+      <Filter>Source Files\Drawing</Filter>
+    </ClCompile>
+    <ClCompile Include="Draw.cpp">
+      <Filter>Source Files\Drawing</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tamagochi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entertainment_need.h">
+      <Filter>Header Files\Needs</Filter>
+    </ClInclude>
+    <ClInclude Include="Food_need.h">
+      <Filter>Header Files\Needs</Filter>
+    </ClInclude>
+    <ClInclude Include="Need.h">
+      <Filter>Header Files\Needs</Filter>
+    </ClInclude>
+    <ClInclude Include="Needs_container.h">
+      <Filter>Header Files\Needs</Filter>
+    </ClInclude>
+    <ClInclude Include="Food.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemContainer.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Toys.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Draw.h">
+      <Filter>Header Files\Drawing</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderBars.h">
+      <Filter>Header Files\Drawing</Filter>
+    </ClInclude>
+    <ClInclude Include="TamagochiDrawTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
