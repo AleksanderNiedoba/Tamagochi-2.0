@@ -69,7 +69,7 @@ void Game::run()
 {
 
 
-	constexpr std::chrono::nanoseconds timestep(160000000);
+	constexpr std::chrono::nanoseconds timestep(1600000000);
 
 	using clock = std::chrono::high_resolution_clock;
 
