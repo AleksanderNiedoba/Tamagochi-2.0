@@ -1,16 +1,5 @@
-#include <iostream>
-#include <string>
-#include <windows.h>
-#include "Need.h"
-#include "Tamagochi.h"
-#include "Needs_container.h"
-#include "TamagochiDrawTypes.h"
 #include "Game.h"
-#include "Draw.h"
-#include "RenderBars.h"
-#include <assert.h>
-#include <stdio.h>
-#include <chrono>
+
 
 
 using namespace std;
@@ -61,14 +50,10 @@ void Game::update()
 	tamagochi.check_needs(needs);
 }
 
-void Game::render() // render jest kurwa nieczytelny!!!
+void Game::render()
 {
 	clearConsole();
-	cout << tamagochi.getMoney() << endl;
-	TamagochiDrawTypes tdt;
-	std::string fileName = tdt.getFileName(tamagochi);
-	Draw d;
-	d.drawTamagochi(fileName);
+	drawer.drawTamagochi(tamagochi);
 	RenderBars rb;
 	std::vector<Need> needs = needs_container.get_needs();
 	rb.renderAll(needs);
@@ -84,7 +69,7 @@ void Game::run()
 {
 
 
-	constexpr std::chrono::nanoseconds timestep(160000000);
+	constexpr std::chrono::nanoseconds timestep(1600000000);
 
 	using clock = std::chrono::high_resolution_clock;
 
