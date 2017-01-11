@@ -1,16 +1,5 @@
-#include <iostream>
-#include <string>
-#include <windows.h>
-#include "Need.h"
-#include "Tamagochi.h"
-#include "Needs_container.h"
-#include "TamagochiDrawTypes.h"
 #include "Game.h"
-#include "Draw.h"
-#include "RenderBars.h"
-#include <assert.h>
-#include <stdio.h>
-#include <chrono>
+
 
 
 using namespace std;
@@ -42,13 +31,7 @@ bool Game::init()
 
 bool Game::endGame()
 {
-	if (tamagochi.is_dead(needs_container))
-	{
-		// clearConsole();//temporary
-		return true;
-	}
-
-	return false;
+	return tamagochi.is_dead(needs_container);
 }
 
 void Game::update()
@@ -61,30 +44,23 @@ void Game::update()
 	tamagochi.check_needs(needs);
 }
 
-void Game::render() // render jest kurwa nieczytelny!!!
+void Game::render(bool menuVisible)
 {
 	clearConsole();
-	cout << tamagochi.getMoney() << endl;
-	TamagochiDrawTypes tdt;
-	std::string fileName = tdt.getFileName(tamagochi);
-	Draw d;
-	d.drawTamagochi(fileName);
-	RenderBars rb;
-	std::vector<Need> needs = needs_container.get_needs();
-	rb.renderAll(needs);
+	if (menuVisible)
+		drawer.drawMenu();
+	else
+		drawer.drawTamagochi(tamagochi);
+
+	drawer.drawBars(needs_container);
 }
-
-
 
 //game loop from https://gist.github.com/mariobadr/673bbd5545242fcf9482
 //on MIT license
 
-
 void Game::run()
 {
-
-
-	constexpr std::chrono::nanoseconds timestep(160000000);
+	constexpr std::chrono::nanoseconds timestep(1600000000);
 
 	using clock = std::chrono::high_resolution_clock;
 
@@ -97,7 +73,9 @@ void Game::run()
 		time_start = clock::now();
 		lag += std::chrono::duration_cast<std::chrono::nanoseconds>(delta_time);
 
-		//quit_game = handle_events();
+		//handle_events();
+
+
 
 		// update game logic as lag permits
 		while (lag >= timestep)
@@ -106,8 +84,11 @@ void Game::run()
 
 			//previous_state = current_state;
 
-			update(); // update at a fixed rate each time
-			render();
+			update(); // update at a fixed rate each time 
+
+
+			menuVisible = (GetAsyncKeyState(mKeyNumber) || menuVisible) && !GetAsyncKeyState(escKeyNumber);
+			render(menuVisible);
 		}
 
 		// calculate how close or far we are from the next timestep

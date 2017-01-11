@@ -27,8 +27,8 @@ void Tamagochi::check_needs(std::vector<Need> needs)
 
 void Tamagochi::demand(Need need)
 {
-	//std::cout<<(*need).get_type()<<" is not satisfied"<<std::endl;
-	// std::cout<<" is not satisfied"<<std::endl;
+	std::cout<<need.get_type()<<" is not satisfied"<<std::endl;
+	 std::cout<<" is not satisfied"<<std::endl;
 }
 
 bool Tamagochi::is_dead(Needs_container &needs_container)

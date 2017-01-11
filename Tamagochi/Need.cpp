@@ -5,7 +5,6 @@ Need::Need(std::string need_type, double need_happiness_weight)
 {
 	type = need_type;
 	happiness_weight = need_happiness_weight;
-	need_lvl = 30;
 }
 
 Need::Need()

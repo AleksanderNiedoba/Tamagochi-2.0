@@ -1,13 +1,12 @@
 #include "Draw.h"
-#include <windows.h>
-#include <string>
-#include <iostream>
-#include <assert.h>
+
+
 
 
 Draw::Draw()
 {
-	//ctor
+	ArtLoader al;
+	_asciiArts = al.loadArts();
 }
 
 Draw::~Draw()
@@ -15,42 +14,24 @@ Draw::~Draw()
 	//dtor
 }
 
-
-void Draw::drawTamagochi(std::string fileName)
+void Draw::drawMenu()
 {
-
-	const std::string filePath = basePath + fileName;
-
-	std::ifstream Reader(filePath);             //Open file
-	assert(Reader.good());
-
-	std::string Art = getFileContents(Reader);       //Get file
-
-	std::cout << Art << std::endl;               //Print it to the screen
-
-	Reader.close();                           //Close file
+	const int menuAsciiArtNr = 4;
+	cout << _asciiArts[menuAsciiArtNr];
 }
 
-std::string Draw::getFileContents(std::ifstream& File)
+void Draw::drawTamagochi(Tamagochi& tamagochi)
 {
-	std::string Lines = "";        //All lines
-
-	if (File)
-	{
-		while (File.good())
-		{
-			std::string TempLine;                  //Temp line
-			std::getline(File, TempLine);         //Get temp line
-			TempLine += "\n";                      //Add newline character
-
-			Lines += TempLine;                     //Add newline
-		}
-		return Lines;
-	}
-	else
-	{
-		return "ERROR cannot load tamagotchi art";
-	}
+	const std::string mood = tamagochi.get_mood();
+	TamagochiDrawTypes tdt;
+	int asciiNr = tdt.getArtNumber(mood);
+	cout << "Money: "<< tamagochi.getMoney() << "$" << endl;
+	cout << _asciiArts[asciiNr];
 }
 
-
+void Draw::drawBars(Needs_container& needs_container)
+{
+	RenderBars rb;
+	std::vector<Need> needs = needs_container.get_needs();
+	rb.renderAll(needs);
+}

@@ -50,3 +50,13 @@ Temporary Items
 *.log
 *.tlog
 *.exe
+*.pbd
+*.idb
+*.pdb
+*.db
+*.ilk
+*.idb
+*.opendb
+.suo
+.vs/*  
+Debug/        

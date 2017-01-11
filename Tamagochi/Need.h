@@ -15,7 +15,7 @@ public:
 	void change_need_lvl(double amount);
 	const int getMaxNeedLvl();
 protected:
-	double need_lvl = 30;
+	double need_lvl = 100;
 	void to_range(double&);
 private:
 	const int MAX_NEED_LVL = 100;

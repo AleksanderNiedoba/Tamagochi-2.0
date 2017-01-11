@@ -1,0 +1,8 @@
+Food:                        Toys: 
+	apple 5$			toy1 10$
+	food2 10$			toy2 20$
+	pizza 30$			toy3 50$	
+
+
+
+PRESS SHIFT TO BUY SOMETHING!
