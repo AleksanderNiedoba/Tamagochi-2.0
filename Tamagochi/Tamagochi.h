@@ -23,6 +23,6 @@ protected:
 private:
 	std::string mood;
 	void demand(Need need);
-	int money = 500;
-	const float happinesToMoney = 0.000001;
+	int money = 5;
+	const float happinesToMoney = 0.00001;
 };

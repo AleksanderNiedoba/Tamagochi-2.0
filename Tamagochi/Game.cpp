@@ -22,8 +22,8 @@ void Game::clearConsole()
 
 bool Game::init()
 {
-	Need food_need("food", 12);
-	Need entertainment_need("entertainment", 8);
+	Need food_need("food", 1);
+	Need entertainment_need("entertainment", 1);
 	needs_container.add_need(food_need);
 	needs_container.add_need(entertainment_need);
 	merchant = Merchant(&tamagochi, &needs_container);
@@ -110,5 +110,6 @@ void Game::run()
 
 		// calculate how close or far we are from the next timestep
 	}
+	getchar();
 	getchar();
 }

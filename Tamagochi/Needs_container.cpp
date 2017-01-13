@@ -39,7 +39,7 @@ double Needs_container::get_happiness_lvl()
 	{
 		happiness_sum += need.get_need_lvl()*need.get_happiness_weight();
 	}
-	return happiness_sum;
+	return happiness_sum/needs.size();
 }
 
 Need * Needs_container::getNeedOfType(string type)//to samo co find (wtf?!)

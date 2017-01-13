@@ -24,13 +24,14 @@ std::map<std::string, Item> Merchant::createItemMap()
 
 	std::map<std::string, Item> itemMap;
 
-	Item apple("apple", 10, 100, "food");
-	Item banana("banana", 12, 115, "food");
-	Item pizza("pizza", 20, 190, "food");
-	Item teddy("teddy", 10, 100, "entertainment");
-	Item car("car", 12, 115, "entertainment");
-	Item doll("doll", 20, 190, "entertainment");
-	Item sexydoll("sexydoll", 100, 200, "entertainment");
+	Item apple("apple", 5, 20, "food");
+	Item banana("banana", 8, 30, "food");
+	Item pizza("pizza", 20, 50, "food");
+
+	Item teddy("teddy", 6, 10, "entertainment");
+	Item car("car", 13, 20, "entertainment");
+	Item doll("doll", 20, 50, "entertainment");
+	Item sexydoll("sexydoll", 100, 150, "entertainment");
 	
 	itemMap["apple"] = apple;
 	itemMap["banana"] = banana;
@@ -48,22 +49,24 @@ void Merchant::buy(std::string itemName)
 	
 	//ze stringa chce miec item kurdw
 	Item itemToBuy = itemMap[itemName];
-	//odjac piniondze o ile ma tyle 
-
-	int tamagoMoney = tamagochiptr->getMoney();
-	int price = itemToBuy.getPrice();
-	if (tamagoMoney >= price)
+	if(itemToBuy.getName() != "")
 	{
-		tamagochiptr->substractMoney(price);
-		//wiedziec jaki need zmienic
-		std::string needToSatisfy = itemToBuy.getNeedToSatisfy();
-		//zdobyc need z needs containera 
-		Need * need = needs_containerptr->getNeedOfType(needToSatisfy);
-		//pobierz kurde ile tego needa chcesz zmienijszycz?!?!?!?!? 
-		double satisfyValue = itemToBuy.getSatisfyValue();
-		//zmienic go 
-		need->change_need_lvl(satisfyValue);
+		//odjac piniondze o ile ma tyle 
 
+		int tamagoMoney = tamagochiptr->getMoney();
+		int price = itemToBuy.getPrice();
+		if (tamagoMoney >= price)
+		{
+			tamagochiptr->substractMoney(price);
+			//wiedziec jaki need zmienic
+			std::string needToSatisfy = itemToBuy.getNeedToSatisfy();
+			//zdobyc need z needs containera 
+			Need * need = needs_containerptr->getNeedOfType(needToSatisfy);
+			//pobierz kurde ile tego needa chcesz zmienijszycz?!?!?!?!? 
+			double satisfyValue = itemToBuy.getSatisfyValue();
+			//zmienic go 
+			need->change_need_lvl(satisfyValue);
+		}
 	}
 		
 		//to kup 

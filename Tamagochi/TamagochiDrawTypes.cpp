@@ -19,7 +19,6 @@ TamagochiDrawTypes::~TamagochiDrawTypes()
 
 int TamagochiDrawTypes::getArtNumber(std::string mood)
 {
-
 	return moodToAsciiArtNr[mood];
 }
 
