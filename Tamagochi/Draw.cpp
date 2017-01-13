@@ -26,7 +26,6 @@ void Draw::drawTamagochi(Tamagochi& tamagochi)
 	TamagochiDrawTypes tdt;
 	int asciiNr = tdt.getArtNumber(mood);
 	cout << _asciiArts[asciiNr];
-	cout << endl << mood;
 }
 
 void Draw::drawBars(Needs_container& needs_container)

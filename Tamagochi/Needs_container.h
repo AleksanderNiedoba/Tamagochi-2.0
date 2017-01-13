@@ -21,7 +21,7 @@ public:
 protected:
 
 private:
-	const double NEED_LVL_CHANGE = -2;
+	const double NEED_LVL_CHANGE = -12;
 	vector<Need> needs;
 
 };

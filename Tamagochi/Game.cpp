@@ -53,7 +53,10 @@ void Game::render(bool menuVisible)
 	if (menuVisible)
 		drawer.drawMenu();
 	else
+	{
 		drawer.drawTamagochi(tamagochi);
+		cout << endl << tamagochi.get_mood();
+	}
 
 	drawer.drawBars(needs_container);
 }
@@ -110,6 +113,7 @@ void Game::run()
 
 		// calculate how close or far we are from the next timestep
 	}
-	getchar();
+	clearConsole();
+	drawer.drawTamagochi(tamagochi);
 	getchar();
 }
