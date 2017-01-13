@@ -26,6 +26,8 @@ bool Game::init()
 	Need entertainment_need("entertainment", 8);
 	needs_container.add_need(food_need);
 	needs_container.add_need(entertainment_need);
+	merchant = Merchant(&tamagochi, &needs_container);
+
 	return true;
 }
 
@@ -47,6 +49,7 @@ void Game::update()
 void Game::render(bool menuVisible)
 {
 	clearConsole();
+	drawer.drawMoney(tamagochi);
 	if (menuVisible)
 		drawer.drawMenu();
 	else
@@ -67,6 +70,7 @@ void Game::run()
 	std::chrono::nanoseconds lag(0);
 	auto time_start = clock::now();
 
+	std::string itemName;
 	while (!endGame())
 	{
 		auto delta_time = clock::now() - time_start;
@@ -85,14 +89,26 @@ void Game::run()
 			//previous_state = current_state;
 
 			update(); // update at a fixed rate each time 
-
-
+			
+			
 			menuVisible = (GetAsyncKeyState(mKeyNumber) || menuVisible) && !GetAsyncKeyState(escKeyNumber);
+			isBuying = menuVisible && GetAsyncKeyState(lShiftNumber);
+			
 			render(menuVisible);
+			if (isBuying)
+			{
+				cout << endl;
+				FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+				cin >> itemName;
+				if (!itemName.empty())
+				{
+					merchant.buy(itemName);
+				}
+			}
 		}
+
 
 		// calculate how close or far we are from the next timestep
 	}
 	getchar();
 }
-

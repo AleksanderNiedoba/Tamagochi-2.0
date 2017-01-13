@@ -13,7 +13,7 @@ public:
 	Needs_container();
 	virtual ~Needs_container();
 	void add_need(Need need);
-	Need getNeedOfType(string type);
+	Need * getNeedOfType(string type);
 	vector<Need>& get_needs();
 	void update_needs();
 	Need find(std::string);

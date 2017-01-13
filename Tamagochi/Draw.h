@@ -19,7 +19,7 @@ public:
 	void drawTamagochi(Tamagochi& tamagochi);
 	void drawMenu();
 	void drawBars(Needs_container& needs_container);
-
+	void drawMoney(Tamagochi& tamagochi);
 
 protected:
 

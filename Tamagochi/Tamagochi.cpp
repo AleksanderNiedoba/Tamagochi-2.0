@@ -78,11 +78,16 @@ void Tamagochi::set_mood(const double happiness_lvl)
 
 void Tamagochi::addMoney(const double happiness_lvl)
 {
-	float randomFactor = ((rand() % RAND_MAX)*0.4) + 0.8;
+	float randomFactor = ((rand() % RAND_MAX)*0.2) + 0.5;
 	money += happiness_lvl*(randomFactor * happinesToMoney);
 }
 
 int Tamagochi::getMoney()
 {
 	return money;
+}
+
+void Tamagochi::substractMoney(int amount)
+{
+	money -= amount;
 }

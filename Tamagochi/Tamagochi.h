@@ -16,11 +16,13 @@ public:
 	const std::string get_mood() const;
 	void addMoney(const double happiness_lvl);
 	int getMoney();
+	void substractMoney(int amount);
+
 protected:
 
 private:
 	std::string mood;
 	void demand(Need need);
 	int money = 500;
-	const float happinesToMoney = 0.0001;
+	const float happinesToMoney = 0.000001;
 };
