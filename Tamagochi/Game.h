@@ -21,8 +21,9 @@ class Game
 public:
 	bool init();
 	void run();
+
 	void update();
-	void render(bool menuVisible);
+	void render();
 	Game();
 	virtual ~Game();
 
@@ -36,12 +37,16 @@ private:
 	Tamagochi tamagochi;
 	Merchant merchant;
 	Draw drawer;
+
 	bool endGame();
-	void clearConsole();
+	void handleEndOfGame();
+	void handleBuyingEvent();
+	void handleMenuEvent();
 
 	bool isBuying = false;
 	bool menuVisible = false;
-	const int escKeyNumber = 0x1B;
-	const int mKeyNumber = 0x4D;
-	const int lShiftNumber = 0x10;
+
+
+
+
 };

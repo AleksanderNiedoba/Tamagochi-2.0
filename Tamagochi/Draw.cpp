@@ -39,3 +39,8 @@ void Draw::drawMoney(Tamagochi& tamagochi)
 {
 	cout << "Money: " << tamagochi.getMoney() << "$" << endl;
 }
+
+void Draw::clearConsole()
+{
+	if (system("CLS")) system("clear");
+}

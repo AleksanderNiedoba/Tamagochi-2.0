@@ -13,11 +13,16 @@ public:
 	~Merchant();
 	
 	void buy(std::string);
+
+
 	
 private:
 	Tamagochi * tamagochiptr;
 	Needs_container * needs_containerptr;
 	std::map<std::string, Item> itemMap;
 	std::map<std::string, Item> createItemMap();
+
+	bool isValidItem(Item & item);
+	void useItem(Item & item);
 };
 

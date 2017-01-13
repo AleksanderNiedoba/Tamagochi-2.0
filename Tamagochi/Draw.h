@@ -3,6 +3,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <Windows.h>
 #include "TamagochiDrawTypes.h"
 #include "Needs_container.h"
 #include "RenderBars.h"
@@ -20,6 +21,7 @@ public:
 	void drawMenu();
 	void drawBars(Needs_container& needs_container);
 	void drawMoney(Tamagochi& tamagochi);
+	void clearConsole();
 
 protected:
 

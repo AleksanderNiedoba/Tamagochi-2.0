@@ -46,32 +46,29 @@ std::map<std::string, Item> Merchant::createItemMap()
 
 void Merchant::buy(std::string itemName)
 {
-	
-	//ze stringa chce miec item kurdw
 	Item itemToBuy = itemMap[itemName];
-	if(itemToBuy.getName() != "")
+	if(isValidItem(itemToBuy))
 	{
-		//odjac piniondze o ile ma tyle 
-
 		int tamagoMoney = tamagochiptr->getMoney();
 		int price = itemToBuy.getPrice();
 		if (tamagoMoney >= price)
 		{
 			tamagochiptr->substractMoney(price);
-			//wiedziec jaki need zmienic
-			std::string needToSatisfy = itemToBuy.getNeedToSatisfy();
-			//zdobyc need z needs containera 
-			Need * need = needs_containerptr->getNeedOfType(needToSatisfy);
-			//pobierz kurde ile tego needa chcesz zmienijszycz?!?!?!?!? 
-			double satisfyValue = itemToBuy.getSatisfyValue();
-			//zmienic go 
-			need->change_need_lvl(satisfyValue);
+			useItem(itemToBuy);
 		}
 	}
-		
-		//to kup 
-	
+}
 
-	//zmienic needa 
-	
+bool Merchant::isValidItem(Item& item)
+{
+	return item.getName() != "";
+}
+
+void Merchant::useItem(Item & item)
+{
+	std::string needToSatisfy = item.getNeedToSatisfy();
+	Need * need = needs_containerptr->getNeedOfType(needToSatisfy);
+
+	double satisfyValue = item.getSatisfyValue();
+	need->change_need_lvl(satisfyValue);
 }

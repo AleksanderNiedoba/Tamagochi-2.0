@@ -14,10 +14,6 @@ Game::~Game()
 	//dtor
 }
 
-void Game::clearConsole()
-{
-	if (system("CLS")) system("clear");
-}
 
 
 bool Game::init()
@@ -46,9 +42,9 @@ void Game::update()
 	tamagochi.check_needs(needs);
 }
 
-void Game::render(bool menuVisible)
+void Game::render()
 {
-	clearConsole();
+	drawer.clearConsole();
 	drawer.drawMoney(tamagochi);
 	if (menuVisible)
 		drawer.drawMenu();
@@ -73,47 +69,59 @@ void Game::run()
 	std::chrono::nanoseconds lag(0);
 	auto time_start = clock::now();
 
-	std::string itemName;
 	while (!endGame())
 	{
 		auto delta_time = clock::now() - time_start;
 		time_start = clock::now();
 		lag += std::chrono::duration_cast<std::chrono::nanoseconds>(delta_time);
 
-		//handle_events();
-
-
-
 		// update game logic as lag permits
 		while (lag >= timestep)
 		{
 			lag -= timestep;
 
-			//previous_state = current_state;
-
 			update(); // update at a fixed rate each time 
 			
-			
-			menuVisible = (GetAsyncKeyState(mKeyNumber) || menuVisible) && !GetAsyncKeyState(escKeyNumber);
-			isBuying = menuVisible && GetAsyncKeyState(lShiftNumber);
-			
-			render(menuVisible);
-			if (isBuying)
-			{
-				cout << endl;
-				FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
-				cin >> itemName;
-				if (!itemName.empty())
-				{
-					merchant.buy(itemName);
-				}
-			}
+			handleMenuEvent();
+
+			render();
+
+			handleBuyingEvent();
 		}
-
-
-		// calculate how close or far we are from the next timestep
 	}
-	clearConsole();
+	handleEndOfGame();
+}
+
+void Game::handleEndOfGame()
+{
+	drawer.clearConsole();
 	drawer.drawTamagochi(tamagochi);
 	getchar();
+	getchar();
+}
+
+void Game::handleBuyingEvent()
+{
+	const int lShiftNumber = 0x10;
+	isBuying = menuVisible && GetAsyncKeyState(lShiftNumber);
+
+	if (isBuying)
+	{
+		cout << endl;
+		FlushConsoleInputBuffer(GetStdHandle(STD_INPUT_HANDLE));
+		std::string itemName;
+		cin >> itemName;
+		if (!itemName.empty())
+		{
+			merchant.buy(itemName);
+		}
+	}
+}
+
+void Game::handleMenuEvent()
+{
+	const int escKeyNumber = 0x1B;
+	const int mKeyNumber = 0x4D;
+
+	menuVisible = (GetAsyncKeyState(mKeyNumber) || menuVisible) && !GetAsyncKeyState(escKeyNumber);
 }
